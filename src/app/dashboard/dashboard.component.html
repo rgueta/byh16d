@@ -1,0 +1,80 @@
+<!-- <h1>Dashboard</h1> -->
+<!-- main -->
+<div class="main">
+    <div class="topbar">
+        <div class="toggle">
+            <i class="menu-outline"></i>
+        </div>
+        <!-- search -->
+        <div class="search">
+            <label>
+                <input type="text" placeholder="Buscar..."/>
+                <i class="far fa-search"></i>
+            </label>
+        </div>
+        <!-- user image-->
+        
+        <div class="menuContainer" clickOutside (clickOutside)="clickedOutside()">
+            <div class="imgContainer" (click)="toggleMenu()">
+                <div class="user">
+                    <img src="../../assets/Me_near.jpg" alt="">
+                   
+                </div>
+                <div>
+                    <i class="far fa-arrow-circle-down"></i>
+                </div>
+            </div>
+            <div class="menu" *ngIf="isMenuOpened">
+                <p>Logout</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="cardBox">
+        <div class="card">
+            <div>
+                <div class="numbers">1,504</div>
+                <div class="cardName">Daily Views</div>
+            </div>
+            <div class="iconBox">
+                <i class="eye-outline"></i>
+            </div>
+        </div>
+
+        <div class="card">
+            <div>
+                <div class="numbers">80</div>
+                <div class="cardName">Sales</div>
+            </div>
+            <div class="iconBox">
+                <i class="cart-outline"></i>
+            </div>
+        </div>
+
+        <div class="card">
+            <div>
+                <div class="numbers">284</div>
+                <div class="cardName">Comments</div>
+            </div>
+            <div class="iconBox">
+                <i class="chatbubbles-outline"></i>
+            </div>
+        </div>
+
+        <div class="card">
+            <div>
+                <div class="numbers">$7,842</div>
+                <div class="cardName">Earning</div>
+            </div>
+            <div class="iconBox">
+                <i class="cash-outline"></i>
+            </div>
+        </div>
+    </div>
+
+    <!-- Detail codes events -->
+    <div class="details">
+        
+    </div>
+
+</div>
