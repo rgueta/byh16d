@@ -21,11 +21,15 @@
                    
                 </div>
                 <div>
-                    <i class="far fa-arrow-circle-down"></i>
+                    <!-- <i [ngClass] = " isMenuOpened ? 'far fa-arrow-circle-up' : 'far fa-arrow-circle-down'"></i> -->
+
+                    <i [ngClass] = " isMenuOpened ? 'fa fa-angle-up' : 'fa fa-angle-down'"></i>
                 </div>
             </div>
-            <div class="menu" *ngIf="isMenuOpened">
-                <p>Logout</p>
+            <div class="menu" *ngIf="isMenuOpened" [@dropDownMenu]>
+                <div class="menu-item">
+                    <div class="item" (click)="logout()">Logout</div>
+                </div>
             </div>
         </div>
     </div>

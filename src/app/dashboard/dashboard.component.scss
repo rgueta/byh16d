@@ -45,9 +45,16 @@ $black2: #999;
 }
 
 .search{
-    position: relative;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    top:20px;
     width: 400px;
     margin: 0 10px;
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
 }
 
 .search label{
@@ -142,12 +149,16 @@ $black2: #999;
 
 // Menu user
 .menuContainer{
-    position: relative;
+    position: absolute;
     display: flex;
+    max-height: 300px;
     align-items: center;
     flex-direction: column;
+    justify-content: space-between;
+    top:10px;
     width: 100px;
 }
+
 .imgContainer{
     position: relative;
     display: flex;
@@ -156,7 +167,6 @@ $black2: #999;
 }
 
 .imgContainer .user{
-    
     position: relative;
     width: 40px;
     height: 40px;
@@ -176,5 +186,9 @@ $black2: #999;
 }
 
 .menu{
-    float: right;
+    padding: 10px;
+}
+
+.item{
+    cursor: pointer;
 }
