@@ -84,16 +84,13 @@
                     <th>Inicio</th>
                     <th>Expira</th>
                     <th>Correo</th>
-                    <th>expiro</th>
                     <th>Accion</th>
                 </tr>
             </thead>
             <tbody>
-                <!-- <tr *ngFor="let item of list; let odd = odd" [ngClass] = "item.expiro === true ? 'expiro' : item.expiro === 'false' ? 'activo' : odd ? 'odd' : 'even'"> -->
-                <!-- <tr *ngFor="let item of list; let odd = odd" [ngClass] = "(item.expiro === false) ? 'activo' : (item.expiro === true) ? 'expiro' : (odd) ? 'odd' : 'even'"> -->
                 <tr *ngFor="let item of list; let odd = odd" 
                 [ngClass] = "{'activo': item.expiro === false, 
-                              'expiro': item.expiro === true,
+                              'expiro': item.expiro != false,
                               'odd' : odd,
                               'even': !odd}">
                     <td>{{ item.code }}</td>
@@ -101,7 +98,6 @@
                     <td>{{ item.initial | date: 'dd/MM/yyyy hh:mm a'}}</td>
                     <td>{{ item.expiry | date: 'dd/MM/yyyy hh:mm a'}}</td>
                     <td>{{ item.email }}</td>
-                    <td>{{ item.expiro }}</td>
                     <td>
                         <button type="button" >ver</button>
                     </td>
