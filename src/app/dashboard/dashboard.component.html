@@ -1,4 +1,3 @@
-<!-- <h1>Dashboard</h1> -->
 <!-- main -->
 <div class="main">
     <div class="topbar">
@@ -18,16 +17,15 @@
             <div class="imgContainer" (click)="toggleMenu()">
                 <div class="user">
                     <img src="../../assets/Me_near.jpg" alt="">
-                   
                 </div>
                 <div>
-                    <!-- <i [ngClass] = " isMenuOpened ? 'far fa-arrow-circle-up' : 'far fa-arrow-circle-down'"></i> -->
-
                     <i [ngClass] = " isMenuOpened ? 'fa fa-angle-up' : 'fa fa-angle-down'"></i>
                 </div>
             </div>
             <div class="menu" *ngIf="isMenuOpened" [@dropDownMenu]>
-                <div class="menu-item">
+                <div class="menu-item" (click)="logout()">
+                    <!-- <i class="far fa-arrow-right-from-bracket"></i> -->
+                    <i class="far fa-arrow-left"></i>
                     <div class="item" (click)="logout()">Logout</div>
                 </div>
             </div>
@@ -77,8 +75,41 @@
     </div>
 
     <!-- Detail codes events -->
-    <div class="details">
-        
-    </div>
+    <div class="details" *ngIf="list; else elseBlock">
+        <table class="datatable">
+            <thead>
+                <tr>
+                    <th>Codigo</th>
+                    <th>Residente</th>
+                    <th>Inicio</th>
+                    <th>Expira</th>
+                    <th>Correo</th>
+                    <th>expiro</th>
+                    <th>Accion</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- <tr *ngFor="let item of list; let odd = odd" [ngClass] = "item.expiro === true ? 'expiro' : item.expiro === 'false' ? 'activo' : odd ? 'odd' : 'even'"> -->
+                <!-- <tr *ngFor="let item of list; let odd = odd" [ngClass] = "(item.expiro === false) ? 'activo' : (item.expiro === true) ? 'expiro' : (odd) ? 'odd' : 'even'"> -->
+                <tr *ngFor="let item of list; let odd = odd" 
+                [ngClass] = "{'activo': item.expiro === false, 
+                              'expiro': item.expiro === true,
+                              'odd' : odd,
+                              'even': !odd}">
+                    <td>{{ item.code }}</td>
+                    <td>{{ item.userName }}</td>
+                    <td>{{ item.initial | date: 'dd/MM/yyyy hh:mm a'}}</td>
+                    <td>{{ item.expiry | date: 'dd/MM/yyyy hh:mm a'}}</td>
+                    <td>{{ item.email }}</td>
+                    <td>{{ item.expiro }}</td>
+                    <td>
+                        <button type="button" >ver</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
 
+    </div>
+    <ng-template #elseBlock>Registros no encontrados</ng-template>
+    
 </div>

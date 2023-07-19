@@ -14,6 +14,7 @@ import { PagesComponent } from './pages/pages.component';
 import { MediaComponent } from './media/media.component';
 import { SettingsComponent } from './settings/settings.component';
 import { ClickOutsideDirective } from './dashboard/clickOutside.directive';
+import { HttpClientModule } from "@angular/common/http";
 
 
 @NgModule({
@@ -28,12 +29,13 @@ import { ClickOutsideDirective } from './dashboard/clickOutside.directive';
     PagesComponent,
     MediaComponent,
     SettingsComponent,
-    ClickOutsideDirective
+    ClickOutsideDirective,
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
