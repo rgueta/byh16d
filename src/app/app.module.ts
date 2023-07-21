@@ -15,6 +15,8 @@ import { MediaComponent } from './media/media.component';
 import { SettingsComponent } from './settings/settings.component';
 import { ClickOutsideDirective } from './dashboard/clickOutside.directive';
 import { HttpClientModule } from "@angular/common/http";
+import { ImplicitReceiver } from '@angular/compiler';
+import { FormsModule } from "@angular/forms";
 
 
 @NgModule({
@@ -35,7 +37,8 @@ import { HttpClientModule } from "@angular/common/http";
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

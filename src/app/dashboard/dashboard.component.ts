@@ -9,11 +9,13 @@ import { environment } from "../../environments/environment";
   animations: [DropDownAnimation]
 })
 export class DashboardComponent implements OnInit {
+  searchTxt:any;
   isMenuOpened:boolean = false;
   list: any = [];
   api: string = environment.url_api;
   intervalVar: any;
   ActiveCodes: number = 0;
+  codeEvents : number = 0;
 
   constructor(
     private http :HttpClient
@@ -29,6 +31,8 @@ export class DashboardComponent implements OnInit {
   }
 
    this.getCodes();
+   this.getCountEvents();
+
   }
 
   getCodes(){
@@ -48,6 +52,13 @@ export class DashboardComponent implements OnInit {
         }
       });
     });
+  }
+
+  getCountEvents(){
+     this.http.get(this.api + '/api/codeEvent/count/all/').subscribe((data:any) =>{
+      this.codeEvents  = data.count;
+    });
+    
   }
 
   toggleMenu(){
