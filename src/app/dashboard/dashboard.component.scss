@@ -208,18 +208,26 @@ $black2: #999;
 }
 
 // Detail  ----------------
-// .details{
-//     position: relative;
-//     // background: $black2;
-//     max-height: 400px;
-//     width: 100%;
-// }
-
-table.datatable {
-	width:100%;
-	border: none;
-	background:#fff;
+.details{
+    position: relative;
+    display: inline-block;
+    max-height: 450px;
+    width: 100%;
+    overflow: auto;
 }
+
+table{
+    width: 100%;
+    overflow: auto;
+}
+
+th{
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    position: sticky;
+    top:0;
+}
+
 table.datatable td.table_foot {
 	border: none;
 	background: #fff;
@@ -229,7 +237,7 @@ table.datatable tr.odd {
 	background: none;
 }
 table.datatable tr.even {
-	background: #ddd;
+	background: #f3f0f0;
 }
 
 table.datatable td {
@@ -243,8 +251,8 @@ table.datatable th {
 	font-size: 10pt;
 	padding: 10px 10px 7px;   
 	text-transform: uppercase;
-	color: #fff;
-	background-color: #263238;
+	color: #484646;
+	background-color: #acafb0;
 }
 
 table.datatable td button:hover {
@@ -256,5 +264,5 @@ table.datatable tr.activo {
 }
 
 table.datatable tr.expiro {
-	color: rgb(123, 121, 120);
+	color: rgb(154, 153, 152);
 }

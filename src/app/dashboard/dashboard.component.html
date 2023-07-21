@@ -35,8 +35,8 @@
     <div class="cardBox">
         <div class="card">
             <div>
-                <div class="numbers">1,504</div>
-                <div class="cardName">Daily Views</div>
+                <div class="numbers">{{ActiveCodes}}</div>
+                <div class="cardName">Activos</div>
             </div>
             <div class="iconBox">
                 <i class="eye-outline"></i>
@@ -79,6 +79,7 @@
         <table class="datatable">
             <thead>
                 <tr>
+                    <th>#</th>
                     <th>Codigo</th>
                     <th>Residente</th>
                     <th>Inicio</th>
@@ -90,9 +91,10 @@
             <tbody>
                 <tr *ngFor="let item of list; let odd = odd" 
                 [ngClass] = "{'activo': item.expiro === false, 
-                              'expiro': item.expiro != false,
+                              'expiro': item.expiro === true,
                               'odd' : odd,
                               'even': !odd}">
+                    <td>{{ item.idx }}</td>          
                     <td>{{ item.code }}</td>
                     <td>{{ item.userName }}</td>
                     <td>{{ item.initial | date: 'dd/MM/yyyy hh:mm a'}}</td>

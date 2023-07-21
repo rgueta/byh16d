@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DropDownAnimation } from "../animations";
 import { HttpClient } from "@angular/common/http";
-
+import { environment } from "../../environments/environment";
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -11,37 +11,44 @@ import { HttpClient } from "@angular/common/http";
 export class DashboardComponent implements OnInit {
   isMenuOpened:boolean = false;
   list: any = [];
+  api: string = environment.url_api;
+  intervalVar: any;
+  ActiveCodes: number = 0;
 
   constructor(
     private http :HttpClient
   ) { }
 
   ngOnInit(){
+  //Interval ----------------------
+  if(environment.interval_call_api){
+    this.intervalVar = setInterval(()=>{
+      this.getCodes();
+      console.log('call API ------', new Date());
+    },environment.timer_call_api);
+  }
+
    this.getCodes();
   }
 
   getCodes(){
-    this.http.get('http://192.168.1.185:5000/api/codes/').subscribe((data) =>{
-     this.list = data;
+    const today = new Date();
+    let index:number = 0;
+    this.http.get(this.api + '/api/codes/').subscribe((data) =>{
+      this.list = data;
       this.list.forEach((element:any) => {
-        let comp = (this.compareDates(new Date(element.expiry),new Date()));
-        if(comp = 1){
-          this.list[0].expiro = false;
-        }else{
-          this.list[0].expiro = true;
+        index = index + 1 ;
+        element.idx = index;
+        if(new Date(element.expiry) > today){
+          this.ActiveCodes ++;
+          element.expiro = false;
+        }
+        else{
+          element.expiro = true;
         }
       });
     });
-
-    console.table(this.list);
   }
-
-  compareDates = (a: Date, b: Date): number => {
-    if (a < b) return -1;
-    if (a > b) return +1;
-  
-    return 0; // dates are equal
-  };
 
   toggleMenu(){
     this.isMenuOpened = !this.isMenuOpened;
