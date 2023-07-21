@@ -6,9 +6,14 @@ export const navbarData = [
     },
     {
         routeLink: 'products',
-        icon: 'fal fa-box-open',
+        icon: 'fal fa-walking',
         label: 'Products'
     },
+    // {
+    //     routeLink: 'products',
+    //     icon: 'fal fa-box-open',
+    //     label: 'Products'
+    // },
     {
         routeLink: 'statistics',
         icon: 'fal fa-chart-bar',
