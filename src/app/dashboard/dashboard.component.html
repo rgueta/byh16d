@@ -7,7 +7,7 @@
         <!-- search -->
         <div class="search">
             <label>
-                <input type="text" placeholder="Buscar..."/>
+                <input class="form-control" type="text" placeholder="Buscar..." [(ngModel)]="searchTxt"/>
                 <i class="far fa-search"></i>
             </label>
         </div>
@@ -89,7 +89,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let item of list; let odd = odd" 
+                <tr *ngFor="let item of list | search: searchTxt; let odd = odd" 
                 [ngClass] = "{'activo': item.expiro === false, 
                               'expiro': item.expiro === true,
                               'odd' : odd,

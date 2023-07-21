@@ -17,6 +17,7 @@ import { ClickOutsideDirective } from './dashboard/clickOutside.directive';
 import { HttpClientModule } from "@angular/common/http";
 import { ImplicitReceiver } from '@angular/compiler';
 import { FormsModule } from "@angular/forms";
+import { SearchPipe } from './search.pipe';
 
 
 @NgModule({
@@ -32,6 +33,7 @@ import { FormsModule } from "@angular/forms";
     MediaComponent,
     SettingsComponent,
     ClickOutsideDirective,
+    SearchPipe,
   ],
   imports: [
     BrowserModule,
