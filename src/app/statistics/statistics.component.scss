@@ -58,6 +58,10 @@ $black2: #999;
 .cardBox .card:hover{
     background: $black2;
     color:beige;
+
+    i{
+        color: white;
+    }
 }
 
 .cardBox .card:hover .numbers,

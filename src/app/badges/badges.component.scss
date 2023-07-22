@@ -211,7 +211,7 @@ $black2: #999;
 .details{
     position: relative;
     display: inline-block;
-    max-height: 450px;
+    max-height: 600px;
     width: 100%;
     overflow: auto;
 }
@@ -265,4 +265,9 @@ table.datatable tr.activo {
 
 table.datatable tr.expiro {
 	color: rgb(154, 153, 152);
+}
+
+table.datatable tr:hover {
+    cursor: pointer;
+	background: rgb(236, 229, 223);
 }
