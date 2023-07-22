@@ -29,6 +29,14 @@ $black2: #999;
     -o-border-radius: 20px;
 }
 
+.card-char{
+    color: $black2;
+    position: relative;
+    font-size: 4.5rem;
+    align-items: center;
+    left: 20%;
+}
+
 .cardBox .card .numbers{
     position: relative;
     font-weight: 500;

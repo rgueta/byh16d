@@ -1,0 +1,268 @@
+
+
+$blue: #287bff;
+$white:#fff;
+$gray: #f5f5f5;
+$black1: #222;
+$black2: #999;
+
+
+/* Menu */
+.main{
+    position: absolute;
+    width: calc(100% - 2rem);
+    left: 1rem;
+    min-height: 95vh;
+    background: $white;
+    transition: 0.5s;
+    -webkit-transition: 0.5s;
+    -moz-transition: 0.5s;
+    -ms-transition: 0.5s;
+    -o-transition: 0.5s;
+    top: 10px;
+}
+
+.topbar{
+    width: 100%;
+    height: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px;
+}
+
+.toggle{
+    position: relative;
+    top: 0;
+    width: 60px;
+    height: 60px;
+    /* background: #ccc; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2.5em;
+    cursor:pointer;
+}
+
+.search{
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    top:20px;
+    width: 400px;
+    margin: 0 10px;
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+}
+
+.search label{
+    position: relative;
+    width: 100%;
+}
+
+.search label input{
+    width: 100%;
+    height: 40px;
+    padding: 5px 20px;
+    padding-left: 35px;
+    font-size: 16px;
+    border-radius: 40px;
+    -webkit-border-radius: 40px;
+    -moz-border-radius: 40px;
+    -ms-border-radius: 40px;
+    -o-border-radius: 40px;
+    outline: none;
+    border: 1px solid $black2
+}
+
+.search label i{
+    position: absolute;
+    top:0;
+    left:10px;
+    font-size: 1.2em;
+}
+
+
+.user img{
+    position: absolute;
+    top:0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.cardBox{
+    position: relative;
+    width: 100%;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    grid-gap:30px;
+}
+
+.cardBox .card{
+    position: relative;
+    background: $white;
+    padding: 30px;
+    border-radius: 20px;
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+    box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -ms-border-radius: 20px;
+    -o-border-radius: 20px;
+}
+
+.cardBox .card .numbers{
+    position: relative;
+    font-weight: 500;
+    font-size: 2.5em;
+    color:$black2;
+}
+
+.cardBox .card .cardName{
+    color:$black1;
+    margin-top: 5px;
+    font-size: 1.1em;
+}
+
+.cardBox .card .iconBox{
+    font-size: 3.5em;
+    color: $black2;
+}
+
+.cardBox .card:hover{
+    background: $black2;
+    color:beige;
+}
+
+.cardBox .card:hover .numbers,
+.cardBox .card:hover .cardName,
+.cardBox .card:hover .iconBox{
+    color: $white;
+}
+
+// Menu user
+.menuContainer{
+    cursor: pointer;
+    position: absolute;
+    display: flex;
+    max-height: 300px;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-between;
+    top:10px;
+    width: 100px;
+    z-index: 100;
+}
+
+.imgContainer{
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.imgContainer .user{
+    position: relative;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.imgContainer i{
+    position: relative;
+    top: calc(50% - 8px);
+    padding-right: 8px;
+}
+
+.menu-item{
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px;
+    width: 100%;
+}
+
+.item{
+    position: relative;
+    cursor: pointer;
+    padding-left: 10px;
+}
+
+.menu-item i{
+    font-size: .7rem;
+}
+
+// Detail  ----------------
+.details{
+    position: relative;
+    display: inline-block;
+    max-height: 450px;
+    width: 100%;
+    overflow: auto;
+}
+
+table{
+    width: 100%;
+    overflow: auto;
+}
+
+th{
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    position: sticky;
+    top:0;
+}
+
+table.datatable td.table_foot {
+	border: none;
+	background: #fff;
+	text-align: center;
+}
+table.datatable tr.odd {
+	background: none;
+}
+table.datatable tr.even {
+	background: #f3f0f0;
+}
+
+table.datatable td {
+	font-size:10pt;
+	padding:5px 10px;
+	text-align: left;
+}
+
+table.datatable th {
+	text-align: left;
+	font-size: 10pt;
+	padding: 10px 10px 7px;   
+	text-transform: uppercase;
+	color: #484646;
+	background-color: #acafb0;
+}
+
+table.datatable td button:hover {
+    cursor: pointer;
+}
+
+table.datatable tr.activo {
+	color: rgb(11, 148, 34);
+}
+
+table.datatable tr.expiro {
+	color: rgb(154, 153, 152);
+}

@@ -2,41 +2,36 @@ export const navbarData = [
     {
         routeLink: 'dashboard',
         icon: 'fal fa-home',
-        label: 'Dashboard'
+        label: 'Visitas'
     },
     {
         routeLink: 'products',
         icon: 'fal fa-walking',
-        label: 'Products'
+        label: 'Peatonal'
     },
-    // {
-    //     routeLink: 'products',
-    //     icon: 'fal fa-box-open',
-    //     label: 'Products'
-    // },
     {
         routeLink: 'statistics',
         icon: 'fal fa-chart-bar',
-        label: 'Statistics'
+        label: 'Estadisticas'
     },
     {
         routeLink: 'coupens',
         icon: 'fal fa-tags',
-        label: 'Coupens'
+        label: 'Tarjetas'
     },
     {
         routeLink: 'pages',
         icon: 'fal fa-file',
-        label: 'Pages'
+        label: 'Paginas'
     },
     {
         routeLink: 'media',
         icon: 'fal fa-camera',
-        label: 'Media'
+        label: 'Fotos'
     },
     {
         routeLink: 'settings',
         icon: 'fal fa-cog',
-        label: 'Settings'
+        label: 'Configurar'
     },
 ];

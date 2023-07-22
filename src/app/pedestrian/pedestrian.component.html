@@ -1,38 +1,7 @@
+
 <!-- main -->
 <div class="main">
-    <div class="topbar">
-        <div class="toggle">
-            <i class="menu-outline"></i>
-        </div>
-        <!-- search -->
-        <div class="search">
-            <label>
-                <input class="form-control" type="text" placeholder="Buscar..." [(ngModel)]="searchTxt"/>
-                <i class="far fa-search"></i>
-            </label>
-        </div>
-        <!-- user image-->
-        
-        <div class="menuContainer" clickOutside (clickOutside)="clickedOutside()">
-            <div class="imgContainer" (click)="toggleMenu()">
-                <div class="user">
-                    <img src="../../assets/Me_near.jpg" alt="">
-                </div>
-                <div>
-                    <i [ngClass] = " isMenuOpened ? 'fa fa-angle-up' : 'fa fa-angle-down'"></i>
-                </div>
-            </div>
-            <div class="menu" *ngIf="isMenuOpened" [@dropDownMenu]>
-                <div class="menu-item" (click)="logout()">
-                    <!-- <i class="far fa-arrow-right-from-bracket"></i> -->
-                    <i class="far fa-arrow-left"></i>
-                    <div class="item" (click)="logout()">Logout</div>
-                </div>
-            </div>
-        </div>
-
-        <H1>Visitas</H1>
-    </div>
+    <h1>Acceso peatonal</h1>
 
     <div class="cardBox">
         <div class="card">
@@ -67,8 +36,8 @@
 
         <div class="card">
             <div>
-                <div class="numbers">7,542</div>
-                <div class="cardName">Codigos</div>
+                <div class="numbers">2,842</div>
+                <div class="cardName">Total tarjetas</div>
             </div>
             <div class="iconBox">
                 <i class="cash-outline"></i>
