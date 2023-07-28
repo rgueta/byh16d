@@ -20,6 +20,7 @@ import { FormsModule } from "@angular/forms";
 import { SearchPipe } from './search.pipe';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -40,7 +41,7 @@ import { SearchPipe } from './search.pipe';
     BrowserAnimationsModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

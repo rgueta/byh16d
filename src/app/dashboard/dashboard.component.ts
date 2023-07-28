@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DropDownAnimation } from "../animations";
 import { HttpClient } from "@angular/common/http";
 import { environment } from "../../environments/environment";
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-dashboard',
@@ -60,13 +61,18 @@ export class DashboardComponent implements OnInit {
   }
 
   getCodeEvents(){
-    if(this.codeFilter != '') {
-      this.http.get(this.api + '/api/codeEvent/code/' + this.codeFilter).subscribe((data:any) =>{
-        this.listEvents = data;
+      this.http.get(this.api + '/api/codeEvent/code/' + this.codeFilter).subscribe(async (data:any) =>{
+        this.listEvents = await data;
+        console.log('length --> ',this.listEvents.length);
+        if(this.listEvents.length == 0){
+          this.openedModal = false;
+          Swal.fire(
+            'Consulta de eventos',
+            'No hay eventos para el codido: ' + this.codeFilter,
+            'info'
+          )
+        }
       });
-    }else{
-
-    }
   }
 
 
