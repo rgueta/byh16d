@@ -21,6 +21,7 @@ export class DashboardComponent implements OnInit {
   ActiveCodes: number = 0;
   codeEvents : number = 0;
   countCodes : number = 0;
+  codeFilter: string = '';
 
   constructor(private http :HttpClient) { }
 
@@ -59,7 +60,13 @@ export class DashboardComponent implements OnInit {
   }
 
   getCodeEvents(){
+    if(this.codeFilter != '') {
+      this.http.get(this.api + '/api/codeEvent/code/' + this.codeFilter).subscribe((data:any) =>{
+        this.listEvents = data;
+      });
+    }else{
 
+    }
   }
 
 
@@ -76,7 +83,9 @@ export class DashboardComponent implements OnInit {
   }
 
 
-  openModal(){
+  openModal(code:string){
+    this.codeFilter = code;
+    this.getCodeEvents();
     this.openedModal = true;
   }
 

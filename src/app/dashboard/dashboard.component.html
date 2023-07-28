@@ -108,7 +108,7 @@
                     <td>{{ item.expiry | date: 'dd/MM/yyyy hh:mm a'}}</td>
                     <td>{{ item.email }}</td>
                     <td>
-                        <input class="btn_eventos" type="button" value="Eventos" (click)="openModal()"/>
+                        <input class="btn_eventos" type="button" value="Eventos" (click)="openModal(item.code)"/>
                     </td>
                 </tr>
             </tbody>
@@ -122,36 +122,27 @@
     <div *ngIf="openedModal == true" class="eventsModal">
       <!-- Modal content -->
       <div class="modal-content">
-        <span class="close" (click)="closeModal()">&times;</span>
+        <div class="modelHeader">
+          <h3>Eventos del codigo <span>{{codeFilter}}</span></h3>
+          <span class="close" (click)="closeModal()">&times;</span>
+        </div>
         <!-- Detail codes events -------------------------------->
         <div class="details" *ngIf="listEvents; else elseBlock">
             <table class="datatable">
                 <thead>
                     <tr>
                         <th>#</th>
-                        <th>Codigo</th>
-                        <th>Residente</th>
-                        <th>Inicio</th>
-                        <th>Expira</th>
-                        <th>Correo</th>
-                        <th>Eventos</th>
+                        <th>Visitante</th>
+                        <th>Evento</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let item of list | search: searchTxt; let odd = odd"
-                    [ngClass] = "{'activo': item.expiro === false,
-                                  'expiro': item.expiro === true,
-                                  'odd' : odd,
+                    <tr *ngFor="let item of listEvents | search: searchTxt; let odd = odd; let i = index"
+                    [ngClass] = "{'odd' : odd,
                                   'even': !odd}">
-                        <td>{{ item.idx }}</td>
-                        <td>{{ item.code }}</td>
-                        <td>{{ item.userName }}</td>
-                        <td>{{ item.initial | date: 'dd/MM/yyyy hh:mm a'}}</td>
-                        <td>{{ item.expiry | date: 'dd/MM/yyyy hh:mm a'}}</td>
-                        <td>{{ item.email }}</td>
-                        <td>
-                            <input class="btn_eventos" type="button" value="Eventos" (click)="openModal()"/>
-                        </td>
+                        <td>{{ i + 1 }}</td>
+                        <td>{{ item.visitor }}</td>
+                        <td>{{ item.time | date: 'dd/MM/yyyy hh:mm a'}}</td>
                     </tr>
                 </tbody>
             </table>
