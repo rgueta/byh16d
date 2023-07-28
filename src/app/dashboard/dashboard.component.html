@@ -1,8 +1,7 @@
 <!-- main -->
 <div class="main">
+  <!-- Header, Search, Menu Login    ----------------------------------------------------------------------->
     <div class="topbar">
-
-        
 
         <div class="toggle">
             <!-- <i class="menu-outline"></i> -->
@@ -17,7 +16,7 @@
             </label>
         </div>
         <!-- user image-->
-        
+
         <div class="menuContainer" clickOutside (clickOutside)="clickedOutside()">
             <div class="imgContainer" (click)="toggleMenu()">
                 <div class="user">
@@ -36,9 +35,10 @@
             </div>
         </div>
 
-        
+
     </div>
 
+    <!-- Counts ------------------------------------------>
     <div class="cardBox">
         <div class="card">
             <div>
@@ -72,7 +72,7 @@
 
         <div class="card">
             <div>
-                <div class="numbers">7,542</div>
+                <div class="numbers">{{countCodes}}</div>
                 <div class="cardName">Codigos</div>
             </div>
             <div class="iconBox">
@@ -81,7 +81,7 @@
         </div>
     </div>
 
-    <!-- Detail codes events -->
+    <!-- Detail codes events -------------------------------->
     <div class="details" *ngIf="list; else elseBlock">
         <table class="datatable">
             <thead>
@@ -92,23 +92,23 @@
                     <th>Inicio</th>
                     <th>Expira</th>
                     <th>Correo</th>
-                    <th>Accion</th>
+                    <th>Eventos</th>
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let item of list | search: searchTxt; let odd = odd" 
-                [ngClass] = "{'activo': item.expiro === false, 
+                <tr *ngFor="let item of list | search: searchTxt; let odd = odd"
+                [ngClass] = "{'activo': item.expiro === false,
                               'expiro': item.expiro === true,
                               'odd' : odd,
                               'even': !odd}">
-                    <td>{{ item.idx }}</td>          
+                    <td>{{ item.idx }}</td>
                     <td>{{ item.code }}</td>
                     <td>{{ item.userName }}</td>
                     <td>{{ item.initial | date: 'dd/MM/yyyy hh:mm a'}}</td>
                     <td>{{ item.expiry | date: 'dd/MM/yyyy hh:mm a'}}</td>
                     <td>{{ item.email }}</td>
                     <td>
-                        <button type="button" >ver</button>
+                        <input class="btn_eventos" type="button" value="Eventos" (click)="openModal()"/>
                     </td>
                 </tr>
             </tbody>
@@ -116,5 +116,49 @@
 
     </div>
     <ng-template #elseBlock>Registros no encontrados</ng-template>
-    
+
+
+    <!-- Code Events Modal  ----------------------------------------------------------------------->
+    <div *ngIf="openedModal == true" class="eventsModal">
+      <!-- Modal content -->
+      <div class="modal-content">
+        <span class="close" (click)="closeModal()">&times;</span>
+        <!-- Detail codes events -------------------------------->
+        <div class="details" *ngIf="listEvents; else elseBlock">
+            <table class="datatable">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Codigo</th>
+                        <th>Residente</th>
+                        <th>Inicio</th>
+                        <th>Expira</th>
+                        <th>Correo</th>
+                        <th>Eventos</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of list | search: searchTxt; let odd = odd"
+                    [ngClass] = "{'activo': item.expiro === false,
+                                  'expiro': item.expiro === true,
+                                  'odd' : odd,
+                                  'even': !odd}">
+                        <td>{{ item.idx }}</td>
+                        <td>{{ item.code }}</td>
+                        <td>{{ item.userName }}</td>
+                        <td>{{ item.initial | date: 'dd/MM/yyyy hh:mm a'}}</td>
+                        <td>{{ item.expiry | date: 'dd/MM/yyyy hh:mm a'}}</td>
+                        <td>{{ item.email }}</td>
+                        <td>
+                            <input class="btn_eventos" type="button" value="Eventos" (click)="openModal()"/>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+        <ng-template #elseBlock>Registros no encontrados</ng-template>
+      </div>
+    </div>
+
 </div>

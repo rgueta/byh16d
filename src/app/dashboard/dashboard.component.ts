@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DropDownAnimation } from "../animations";
 import { HttpClient } from "@angular/common/http";
 import { environment } from "../../environments/environment";
+
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -9,17 +10,19 @@ import { environment } from "../../environments/environment";
   animations: [DropDownAnimation]
 })
 export class DashboardComponent implements OnInit {
+  openedModal:boolean = false;
+
   searchTxt:any;
   isMenuOpened:boolean = false;
   list: any = [];
+  listEvents: any = [];
   api: string = environment.url_api;
   intervalVar: any;
   ActiveCodes: number = 0;
   codeEvents : number = 0;
+  countCodes : number = 0;
 
-  constructor(
-    private http :HttpClient
-  ) { }
+  constructor(private http :HttpClient) { }
 
   ngOnInit(){
   //Interval ----------------------
@@ -31,15 +34,16 @@ export class DashboardComponent implements OnInit {
   }
 
    this.getCodes();
-   this.getCountEvents();
 
   }
 
   getCodes(){
     const today = new Date();
     let index:number = 0;
-    this.http.get(this.api + '/api/codes/').subscribe((data) =>{
-      this.list = data;
+    this.http.get(this.api + '/api/codes/visitors_dashboard/').subscribe((data:any) =>{
+      this.list = data.codes;
+      this.codeEvents = data.countEvents;
+      this.countCodes = data.countCodes;
       this.list.forEach((element:any) => {
         index = index + 1 ;
         element.idx = index;
@@ -54,12 +58,10 @@ export class DashboardComponent implements OnInit {
     });
   }
 
-  getCountEvents(){
-     this.http.get(this.api + '/api/codeEvent/count/all/').subscribe((data:any) =>{
-      this.codeEvents  = data.count;
-    });
-    
+  getCodeEvents(){
+
   }
+
 
   toggleMenu(){
     this.isMenuOpened = !this.isMenuOpened;
@@ -70,9 +72,16 @@ export class DashboardComponent implements OnInit {
   }
 
   logout(){
-    
-    
     this.isMenuOpened = false;
+  }
+
+
+  openModal(){
+    this.openedModal = true;
+  }
+
+  closeModal(){
+    this.openedModal = false;
   }
 
 }
