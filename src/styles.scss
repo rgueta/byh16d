@@ -1,12 +1,19 @@
 /* You can add global styles to this file, and also import other style files */
 // @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap');
+
+$blue: #287bff;
+$white:#fff;
+$gray: #f5f5f5;
+$black1: #222;
+$black2: #999;
+
 @import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap');
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    
+
 }
 
 body {
@@ -31,6 +38,130 @@ body {
     }
 
     .card-body {
-        padding: 1rem 1.5rem; 
+        padding: 1rem 1.5rem;
     }
+}
+
+
+// Menu user  -------------------
+.menuContainer{
+    cursor: pointer;
+    // position: absolute;
+    top:10px;
+    width: 100px;
+    z-index: 10
+}
+
+.imgContainer{
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.imgContainer .user{
+    position: relative;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.imgContainer i{
+    position: relative;
+    top: calc(50% - 8px);
+    // padding-right: 8px;
+}
+
+.menu-item{
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px;
+    width: 100%;
+}
+
+.item{
+    position: relative;
+    cursor: pointer;
+    padding-left: 10px;
+}
+
+.menu-item i{
+    font-size: .7rem;
+}
+
+// -----      Detail  ----------------
+
+
+.details{
+    position: relative;
+    display: inline-block;
+    max-height: 600px;
+    width: 100%;
+    overflow: auto;
+}
+
+table{
+    width: 100%;
+    overflow: auto;
+}
+
+th{
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    position: sticky;
+    top:0;
+    z-index: 1;
+}
+
+table.datatable td.table_foot {
+	border: none;
+	background: #fff;
+	text-align: center;
+}
+table.datatable tr.odd {
+	background: none;
+}
+table.datatable tr.even {
+	background: #f3f0f0;
+}
+
+table.datatable td {
+	font-size:10pt;
+	padding:5px 10px;
+	text-align: left;
+}
+
+table.datatable th {
+	text-align: left;
+	font-size: 10pt;
+	padding: 10px 10px 7px;
+	text-transform: uppercase;
+	color: #484646;
+	background-color: #acafb0;
+}
+
+table.datatable td button:hover {
+    cursor: pointer;
+}
+
+table.datatable tr.activo {
+	color: rgb(11, 148, 34);
+}
+
+table.datatable tr.expiro {
+	color: rgb(154, 153, 152);
+}
+
+table.datatable tr:hover {
+    cursor: pointer;
+	background: rgb(236, 229, 223);
 }

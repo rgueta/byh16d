@@ -6,7 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./media.component.scss']
 })
 export class MediaComponent implements OnInit {
-
+searchTxt:any;
+list: any = [];
   constructor() { }
 
   ngOnInit(): void {

@@ -1,1 +1,51 @@
-<h1>Fotos</h1>
+
+<!-- main -->
+<div class="main">
+    <h1>Fotos</h1>
+
+    <div class="search">
+        <label>
+            <input class="form-control" type="text" placeholder="Buscar..." [(ngModel)]="searchTxt"/>
+            <i class="far fa-search"></i>
+        </label>
+    </div>
+
+    <div><br><br></div>
+
+    <!-- Detail codes events -->
+    <div class="details" *ngIf="list; else elseBlock">
+        <table class="datatable">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Codigo</th>
+                    <th>Residente</th>
+                    <th>Inicio</th>
+                    <th>Expira</th>
+                    <th>Correo</th>
+                    <th>Accion</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of list | search: searchTxt; let odd = odd"
+                [ngClass] = "{'activo': item.expiro === false,
+                              'expiro': item.expiro === true,
+                              'odd' : odd,
+                              'even': !odd}">
+                    <td>{{ item.idx }}</td>
+                    <td>{{ item.code }}</td>
+                    <td>{{ item.userName }}</td>
+                    <td>{{ item.initial | date: 'dd/MM/yyyy hh:mm a'}}</td>
+                    <td>{{ item.expiry | date: 'dd/MM/yyyy hh:mm a'}}</td>
+                    <td>{{ item.email }}</td>
+                    <td>
+                        <button type="button" >ver</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+    <ng-template #elseBlock>Registros no encontrados</ng-template>
+
+</div>
