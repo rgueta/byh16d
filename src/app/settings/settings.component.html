@@ -1,1 +1,116 @@
-<h1>Configurar</h1>
+
+<div class="main">
+  <div class="sidemenu">
+    <ul>
+      <li>
+        <!-- <i class="fal fa-cog" ></i> -->
+        <i class="fal fa-user"></i>
+        <a (click)="openRegister()">Registrar</a>
+      </li>
+      <li>
+        <i class="fal fa-cog" ></i>
+        <a (click)="Config()">Configurar</a>
+      </li>
+
+    </ul>
+  </div>
+
+  <!-- Code register Modal  ----------------------------------------------------------------------->
+  <div *ngIf="openedModal == true" class="registerModal">
+    <!-- Modal content -->
+    <div class="modal-content">
+      <div class="modelHeader">
+        <!-- <h3>Registrar nuevo usuario </h3> -->
+        <span class="close" (click)="closeModal()">&times;</span>
+      </div>
+      <!-- Detail codes events -------------------------------->
+      <div class="details" >
+        <form (ngSubmit)="Register()" [formGroup]="register">
+          <div class="input-group">
+            <div class="input">
+              <div>
+                <!-- <i class="fal fa-user-circle avatar" (click)="file.click()"></i> -->
+                <!-- <img class="avatar" #base64Img src="{{image}}" style='display:block; width:100px;height:100px;'> -->
+                <img class="avatar" #base64Img src="{{image}}" (click)="file.click()">
+              </div>
+              <div class="avatar-input">
+              <input #file type="file" placeholder="Imagen" accept="image/png,jpg,jpeg"
+               (change)="onFileSelected($event)"/></div>
+
+            </div>
+
+            <div class="input">
+              <input type="text" placeholder="Nombre" formControlName="name"/>
+              <div *ngIf="(name!.dirty || name!.touched) && name!.errors" class="errors">
+                <span *ngIf="name.errors?.['required']">Nombre es requerido</span>
+             </div>
+            </div>
+
+            <div class="input">
+              <input type="text" placeholder="Usuario" formControlName="username"/>
+              <div *ngIf="(username!.dirty || username!.touched) && username!.errors" class="errors">
+                <span *ngIf="username.errors?.['required']">Usuario es requerido</span>
+             </div>
+            </div>
+
+             <div class="input">
+               <!-- <label>Email</label> -->
+               <input type="email" placeholder="Email" formControlName="email"/>
+
+               <div *ngIf="(email!.dirty || email!.touched) && email!.errors" class="errors">
+                <span *ngIf="email.errors?.['required']">Email es requerido</span>
+               <span *ngIf="email.errors?.['email']">Email es invalido</span>
+             </div>
+
+             </div>
+            
+             <div>
+               <input type="password" placeholder="Password" formControlName="pwd"/>
+             </div>
+             <div *ngIf="(pwd!.dirty || pwd!.touched) && pwd!.errors" class="errors">
+               <span *ngIf="pwd.errors?.['required']">pwd es requerido</span>
+               <span *ngIf="pwd.errors?.['minlength']">Password minimo 4 caracters</span>
+             </div>
+           </div>
+
+           <div>
+            <input type="text" placeholder="Telefono 123-123-1234" formControlName="sim"/>
+          </div>
+          <div *ngIf="(sim!.dirty || sim!.touched) && sim!.errors" class="errors">
+            <span *ngIf="sim.errors?.['required']">Telefono es requerido</span>
+            <span *ngIf="sim.errors?.['pattern']">Formato no valido</span>
+          </div>
+
+          <div>
+            <select name="" id="" formControlName="gender" (change)="onChangeGender($event)" >
+              <option value="">Genero</option>
+                <option value="F">Mujer</option>
+                <option value="M">Hombre</option>
+                <option value="O">Otro</option>
+              </select>
+          </div>
+
+          <div *ngIf="(gender!.dirty || gender!.touched) && gender!.errors" class="errors">
+            <span *ngIf="gender.errors?.['required']">Genero es requerido</span>
+          </div>
+
+
+
+           <button class="registerButton" type="submit" expand="block"
+             [disabled]="!register.valid">Registrar</button>
+
+             <!-- <button class="loginButton" expand="block" (click)='openStore()'>Soy visitante</button> -->
+
+           <div class="resetPwd-Link">
+             <!-- <a (click)="pwdReset()">Recuperar contraseña</a> -->
+             <!-- <a routerLink="/pwd-reset">Recuperar contraseña</a> -->
+           </div>
+         </form>
+
+      </div>
+      <ng-template #elseBlock>Registros no encontrados</ng-template>
+    </div>
+  </div>
+
+
+</div>

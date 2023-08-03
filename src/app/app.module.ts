@@ -16,8 +16,10 @@ import { SettingsComponent } from './settings/settings.component';
 import { ClickOutsideDirective } from './dashboard/clickOutside.directive';
 import { HttpClientModule } from "@angular/common/http";
 import { ImplicitReceiver } from '@angular/compiler';
-import { FormsModule } from "@angular/forms";
+import { FormsModule,ReactiveFormsModule } from "@angular/forms";
 import { SearchPipe } from './search.pipe';
+import { LoginComponent } from './login/login.component';
+import { CookieService } from 'ngx-cookie-service';
 
 
 
@@ -35,6 +37,7 @@ import { SearchPipe } from './search.pipe';
     SettingsComponent,
     ClickOutsideDirective,
     SearchPipe,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
@@ -42,8 +45,9 @@ import { SearchPipe } from './search.pipe';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
+    ReactiveFormsModule
   ],
-  providers: [],
+  providers: [CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

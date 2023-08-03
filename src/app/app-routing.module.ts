@@ -7,9 +7,11 @@ import { PagesComponent } from './pages/pages.component';
 import { PedestrianComponent } from './pedestrian/pedestrian.component';
 import { SettingsComponent } from './settings/settings.component';
 import { StatisticsComponent } from './statistics/statistics.component';
+import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
-  {path: '', redirectTo: 'dashboard', pathMatch: 'full'},
+  {path: '', redirectTo: 'login', pathMatch: 'full'},
+  {path: 'login', component: LoginComponent},
   {path: 'dashboard', component: DashboardComponent},
   {path: 'products', component: PedestrianComponent},
   {path: 'statistics', component: StatisticsComponent},

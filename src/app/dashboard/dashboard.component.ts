@@ -72,6 +72,8 @@ export class DashboardComponent implements OnInit {
             'No hay eventos para el codido: ' + this.codeFilter,
             'info'
           )
+        }else{
+          this.openedModal = true;
         }
       });
   }
@@ -93,7 +95,6 @@ export class DashboardComponent implements OnInit {
   openModal(code:string){
     this.codeFilter = code;
     this.getCodeEvents();
-    this.openedModal = true;
   }
 
   closeModal(){
