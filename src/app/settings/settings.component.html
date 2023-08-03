@@ -97,7 +97,6 @@
 
           <div>
             <select name="" id="" formControlName="roles" (change)="onChangeRoles($event)" multiple>
-              <!-- <option value="">Roles</option> -->
               <option *ngFor="let role of list_roles" [ngValue]="role._id">{{role.name}}</option>
               </select>
           </div>
