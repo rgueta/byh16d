@@ -9,20 +9,19 @@ import { Observable, firstValueFrom} from 'rxjs'
 })
 export class ApiService {
   api_url: string = environment.url_api;
-  private http = Inject(HttpClient);
-  REST_API_SERVER = environment.url_api;
+  // private http = Inject(HttpClient);
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
   
- getData(collection:String) {
+ getData(collection:string) {
   // const token = localStorage.getItem(TOKEN_KEY);
   let  options = {
     headers : {
-  'content-type' : 'application/json',
+      'content-type' : 'application/json',
+    }
   }
-  }
-    return this.http.get(this.REST_API_SERVER + collection ,options);
+    return this.http.get(this.api_url + collection ,options);
 }
 
   onLogin(obj:any) : Observable<any>{

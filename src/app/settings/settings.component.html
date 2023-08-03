@@ -95,6 +95,16 @@
           </div>
 
 
+          <div>
+            <select name="" id="" formControlName="roles" (change)="onChangeRoles($event)" multiple>
+              <!-- <option value="">Roles</option> -->
+              <option *ngFor="let role of list_roles" [ngValue]="role._id">{{role.name}}</option>
+              </select>
+          </div>
+
+          <div *ngIf="(roles!.dirty || roles!.touched) && roles!.errors" class="errors">
+            <span *ngIf="roles.errors?.['required']">Role es requerido</span>
+          </div>
 
            <button class="registerButton" type="submit" expand="block"
              [disabled]="!register.valid">Registrar</button>

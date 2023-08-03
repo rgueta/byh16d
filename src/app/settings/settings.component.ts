@@ -13,13 +13,13 @@ export class SettingsComponent implements OnInit {
   openedModal:boolean = false;
   register: FormGroup;
   image:string = '../assets/user.png';
+  list_roles: any = [];
 
-  apiService = Inject(ApiService)
-
-  constructor() {
+  constructor(private api: ApiService) {
 
   }
 
+// #region get form controls 
   get name() {
     return this.register.get('name');
   }
@@ -52,8 +52,9 @@ export class SettingsComponent implements OnInit {
     return this.register.get('roles');
   }
 
-
-  ngOnInit(): void {
+//#endregion
+  
+ngOnInit(): void {
 
     this.register = new FormGroup({
       name: new FormControl('',[Validators.required]),
@@ -70,8 +71,9 @@ export class SettingsComponent implements OnInit {
   }
 
   async getRoles(){
-     await this.apiService.getData('/api/roles').subscribe(async (data:any) => {
-      console.log('getToles --> ',data);
+     await this.api.getData('/api/roles').subscribe(async (data:any) => {
+      this.list_roles = data;
+      console.log('list_roles -->', this.list_roles);
     });
     
   }
@@ -101,10 +103,14 @@ export class SettingsComponent implements OnInit {
   onChangeGender(event:any){
   }
 
+  onChangeRoles(event:any){
+    console.log('role --> ',event.target.value);
+  }
+
   async Register(){
-    // const response = await this.apiService.resgister(this.register.value);
-    // console.log('response --> ', response);
-    console.log('response --> ', this.register.value);
+    const response = await this.api.register(this.register.value);
+    console.log('response --> ', response);
+    // console.log('response --> ', this.register.value);
   }
 
   async Config(){}
