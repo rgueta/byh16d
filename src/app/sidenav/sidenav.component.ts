@@ -1,6 +1,8 @@
 import { animate, keyframes, style, transition, trigger } from '@angular/animations';
 import { Component, Output, EventEmitter, OnInit, HostListener } from '@angular/core';
 import { navbarData } from './nav-data';
+import { CookieService } from 'ngx-cookie-service';
+
 
 interface SideNavToggle {
   screenWidth: number;
@@ -28,7 +30,7 @@ interface SideNavToggle {
     ]),
     trigger('rotate', [
       transition(':enter', [
-        animate('1000ms', 
+        animate('1000ms',
           keyframes([
             style({transform: 'rotate(0deg)', offset: '0'}),
             style({transform: 'rotate(2turn)', offset: '1'})
@@ -44,6 +46,7 @@ export class SidenavComponent implements OnInit {
   collapsed = false;
   screenWidth = 0;
   navData = navbarData;
+  logged: string = 'true';
 
   @HostListener('window:resize', ['$event'])
   onResize(event: any) {
@@ -54,7 +57,10 @@ export class SidenavComponent implements OnInit {
     }
   }
 
+  constructor(private cookieService: CookieService){}
+
   ngOnInit(): void {
+    this.logged = this.cookieService.get('logged');
       this.screenWidth = window.innerWidth;
   }
 

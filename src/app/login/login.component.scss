@@ -1,0 +1,46 @@
+.main{
+  height: 100%;
+  width: 100%;
+  background-image: url("../../assets/barrier-banner-1.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size:cover;
+
+}
+
+form{
+  border-radius: 4px;
+  background:   white;
+  position:absolute;
+  height: 300px;
+  top:50%;
+  left:50%;
+  margin-left:-220px;/* half width*/
+  margin-top:-100px;/* half height*/
+  opacity: 0.9;
+  width: 400px;
+
+ input, label{
+   display:grid;
+   justify-content: center;
+   margin:auto;
+   position: relative;
+    // margin-left:-100px;/* half width*/
+    // margin-top:-100px;/* half height*/
+    top:20px;
+    padding: 10px;
+  }
+
+  input[type="email"]{
+    margin-bottom: 20px;
+  }
+
+  .loginButton{
+    display:grid;
+    justify-content: center;
+    margin:auto;
+     position: relative;
+     top:60px;
+     padding: 10px;
+  }
+}

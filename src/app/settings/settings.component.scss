@@ -1,0 +1,202 @@
+$blue: #287bff;
+$white:#fff;
+$gray: #f5f5f5;
+$black1: #222;
+$black2: #999;
+
+.main{
+  display: flex;
+  position: relative;
+  height: 100%;
+  width: 100%;
+  background-image: url("../../assets/barrier-banner-1.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size:cover;
+}
+
+.main::before{
+  content: "";
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+  background-color: rgba(165,165,165,0.95);
+}
+
+.sidemenu{
+  background: #d0e2ec;
+  transition: all .5s ease;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    width: 10rem;
+    height: 100vh;
+    box-shadow: 0.063rem 0 1.25rem 0 #8690a3;
+
+    .logo-text {
+      margin-top: 10px;
+        margin-left: 1.5rem;
+        font-size: 24px;
+        font-weight: 700;
+        color: #635c5c;
+    }
+
+    ul{
+      position: relative;
+      top:30px;
+      left: 50%;
+      list-style-type: none;
+      margin-left: -40px;
+    }
+
+    li{
+      margin-bottom: 15px;
+    }
+
+    i{
+      margin-left: -20px;
+      margin-right: 10px;
+    }
+
+    a:hover{
+      cursor: pointer;
+    }
+
+
+}
+
+.registerModal {
+  display: block; /* Hidden by default */
+  box-shadow: 0.063rem 0 1.25rem 0 #8690a3;
+  position: fixed; /* Stay in place */
+  left: 50%;
+  top: 10px;
+  margin-left: -7vw;
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgba(255,255,255,0.4); /* Black w/ opacity */
+  height: 80%;
+  width: 400px;
+  z-index: 10;
+    h3{
+      margin-top: 10px;
+      margin-left: 20px;
+      color: $black2;
+    }
+
+
+    .errors{
+      display: inline-block;
+      font-size: small;
+      color: orangered;
+      padding-left: 55px;
+      padding-top: 15px;
+    }
+}
+
+.modal-content{
+  position: relative;
+  // height: 100%;
+}
+
+.modelHeader{
+  display: inline-block;
+  // justify-content: space-between;
+  // float: right;
+  width: 98%;
+  span{
+    color: $black1;
+  }
+}
+
+.close {
+  position: relative;
+  margin-right: 10px;
+  // top:-5px;
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  z-index: 12;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+
+.user-image{
+  background-color: aqua;
+  background-color: rgba(0, 0, 0, .25);
+  border-radius: 50px;
+}
+
+.avatar{
+  background-color: rgba(255,255,255,0.4);
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+
+  display: inline-block;
+  font-size: 5rem;
+  height: 100px;
+  width: 100px;
+  left: 50%;
+  margin-left: -45px;
+  color:#635c5c;
+  position: relative;
+}
+
+.avatar-input{
+  display: none;
+}
+
+.avatar:hover{
+  cursor: pointer;
+}
+
+form{
+  border-radius: 4px;
+  position:relative;
+  height: 300px;
+  opacity: 0.9;
+
+
+ input,select{
+   display:inline-block;
+   float: left;
+   justify-content: center;
+   margin-bottom: 20px;
+   position: relative;
+    margin-left:50px;/* half width*/
+    top:60px;
+    padding: 10px;
+    width: 300px;
+  }
+
+  // .ng-invalid{
+  //   border: 1px solid red;
+  // }
+
+  .registerButton{
+    display:grid;
+    justify-content: center;
+    // left: 100px;
+    margin:auto;
+     position: relative;
+     top:50px;
+     padding: 15px 30px 15px 30px;
+  }
+
+  .registerButton:hover{
+    cursor: pointer;
+  }
+
+ 
+}
