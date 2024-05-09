@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
-import { first } from 'rxjs/operators';
-import { ApiService } from '../services/api.service';
-import { HttpClient } from '@angular/common/http';
+import { AuthService } from '../services/auth.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-login',
@@ -15,8 +13,7 @@ export class LoginComponent implements OnInit {
   credentials: FormGroup;
   logged: boolean = false;
 
-  constructor(private apiService: ApiService,
-              private api: HttpClient){}
+  constructor(private auth: AuthService){}
 
   // Easy access for form fields
  get email() {
@@ -50,7 +47,20 @@ export class LoginComponent implements OnInit {
   }
 
   login(){
-
+    this.auth.onLogin(this.credentials.value).subscribe(
+      async res =>{
+        const roles =  res;
+        
+        console.log('Return --> ',roles)
+      },
+      async err =>{
+        Swal.fire(
+          'Alerta',
+          'Error login: ' + JSON.stringify(err),
+          'info'
+        )
+      }
+    )
   }
 
   pwdReset(){
