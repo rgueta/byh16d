@@ -43,7 +43,9 @@ export class DashboardComponent implements OnInit {
   getCodes(){
     const today = new Date();
     let index:number = 0;
-    this.http.get(this.api + '/api/codes/visitors_dashboard/').subscribe((data:any) =>{
+    this.http.get(this.api + '/api/codes/visitors_dashboard/')
+    .subscribe((data:any) =>{
+      console.log('codes: ', data);
       this.list = data.codes;
       this.codeEvents = data.countEvents;
       this.countCodes = data.countCodes;
@@ -58,7 +60,11 @@ export class DashboardComponent implements OnInit {
           element.expiro = true;
         }
       });
-    });
+    },
+  (error:any) =>{
+    console.log('error: ', error)
+  }
+  );
   }
 
   getCodeEvents(){
