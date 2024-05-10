@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { AuthService } from '../services/auth.service';
 import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +14,10 @@ export class LoginComponent implements OnInit {
   credentials: FormGroup;
   logged: boolean = false;
 
-  constructor(private auth: AuthService){}
+  constructor(
+    private auth: AuthService,
+    private router : Router,
+  ){}
 
   // Easy access for form fields
  get email() {
@@ -39,19 +43,20 @@ export class LoginComponent implements OnInit {
     password: ''
   };
 
-  onLogin(){
-    // this.accService.onLogin(this.loginObj).subscribe((res: any) =>{
-    //   console.log('res --> ', res);
-    //
-    // });
-  }
 
   login(){
-    this.auth.onLogin(this.credentials.value).subscribe(
+    this.auth.Login(this.credentials.value).subscribe(
       async res =>{
         const roles =  res;
-        
-        console.log('Return --> ',roles)
+        console.log('Return --> ',roles);
+        // for(const val_myrole of JSON.parse(roles)){
+        //   if(localStorage.getItem('locked') === 'true')
+        //   {
+        //     await this.showAlert('Alerta','Usuario bloqueado !','info');
+        //     return;
+        //   }
+        // };
+        this.router.navigateByUrl('/dashboard', { replaceUrl: true });
       },
       async err =>{
         Swal.fire(
@@ -60,6 +65,14 @@ export class LoginComponent implements OnInit {
           'info'
         )
       }
+    )
+  }
+
+  async showAlert(header:string,msg:string,icon:any){
+    Swal.fire(
+      header,
+      msg,
+      icon
     )
   }
 

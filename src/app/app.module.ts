@@ -14,12 +14,13 @@ import { PagesComponent } from './pages/pages.component';
 import { MediaComponent } from './media/media.component';
 import { SettingsComponent } from './settings/settings.component';
 import { ClickOutsideDirective } from './dashboard/clickOutside.directive';
-import { HttpClientModule } from "@angular/common/http";
+import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { ImplicitReceiver } from '@angular/compiler';
 import { FormsModule,ReactiveFormsModule } from "@angular/forms";
 import { SearchPipe } from './search.pipe';
 import { LoginComponent } from './login/login.component';
 import { CookieService } from 'ngx-cookie-service';
+import { JwtInterceptor } from "../app/interceptors/jwt.interceptor";
 
 
 @NgModule({
@@ -46,7 +47,9 @@ import { CookieService } from 'ngx-cookie-service';
     FormsModule,
     ReactiveFormsModule,
   ],
-  providers: [CookieService],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

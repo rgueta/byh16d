@@ -3,6 +3,9 @@ import { DropDownAnimation } from "../animations";
 import { HttpClient } from "@angular/common/http";
 import { environment } from "../../environments/environment";
 import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
+import { Utils } from "../tools/tools";
+import { ApiService } from "../services/api.service";
 
 
 @Component({
@@ -25,7 +28,11 @@ export class DashboardComponent implements OnInit {
   countCodes : number = 0;
   codeFilter: string = '';
 
-  constructor(private http :HttpClient) { }
+  constructor(
+    private http :HttpClient,
+    private router : Router,
+    private apiService: ApiService
+  ) { }
 
   ngOnInit(){
   //Interval ----------------------
@@ -43,7 +50,9 @@ export class DashboardComponent implements OnInit {
   getCodes(){
     const today = new Date();
     let index:number = 0;
-    this.http.get(this.api + '/api/codes/visitors_dashboard/')
+    this.apiService.getData(this.api + 'api/codes/visitors_dashboard/' +
+      localStorage.getItem('my-userId')
+    )
     .subscribe((data:any) =>{
       console.log('codes: ', data);
       this.list = data.codes;
@@ -68,16 +77,14 @@ export class DashboardComponent implements OnInit {
   }
 
   getCodeEvents(){
-      this.http.get(this.api + '/api/codeEvent/code/' + this.codeFilter).subscribe(async (data:any) =>{
+      this.http.get(this.api + 'api/codeEvent/code/' + this.codeFilter).subscribe(async (data:any) =>{
         this.listEvents = await data;
         console.log('length --> ',this.listEvents.length);
         if(this.listEvents.length == 0){
           this.openedModal = false;
-          Swal.fire(
-            'Consulta de eventos',
+          this.showAlert('Consulta de eventos',
             'No hay eventos para el codido: ' + this.codeFilter,
-            'info'
-          )
+            'info')
         }else{
           this.openedModal = true;
         }
@@ -95,9 +102,28 @@ export class DashboardComponent implements OnInit {
 
   logout(){
     this.isMenuOpened = false;
+    Swal.fire({
+      text: "Deseas salir ?",
+      showDenyButton: true,
+      confirmButtonText: "Si",
+      denyButtonText: `No`
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.router.navigateByUrl('/login', { replaceUrl: true });
+        Utils.cleanLocalStorage();
+      } else if (result.isDenied) {
+        console.log('mantener')
+      }
+    });
   }
 
-
+  async showAlert(header:string,msg:string,icon:any){
+    Swal.fire(
+      header,
+      msg,
+      icon
+    )
+  }
   openModal(code:string){
     this.codeFilter = code;
     this.getCodeEvents();
