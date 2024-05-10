@@ -58,9 +58,7 @@ export class JwtInterceptor implements HttpInterceptor {
       if (url == `${this.REST_API_SERVER}api/auth/signin` || 
           url == `${this.REST_API_SERVER}api/auth/signup` || 
           url == `${this.REST_API_SERVER}api/pwdResetReq` || 
-          url == `${this.REST_API_SERVER}api/users/register/` || 
-          url == `${this.REST_API_SERVER}api/backstage`) {
-        console.log('URL calling bilongs to blocked list -- > ', url);
+          url == `${this.REST_API_SERVER}api/users/register`) {
       return true;
     } else {
       return false;
@@ -112,7 +110,6 @@ private handle401Error(request: HttpRequest < any >, next: HttpHandler): Observa
     this.isRefreshingToken = true;
     this.api.currentAccessToken = null;
 
-    console.log(' jwt.interceptor handle401Error --- > ');
     // return next.handle(this.addToken(request));
     // First, get a new access token
     return (this.api.getNewAccessToken()).pipe(
