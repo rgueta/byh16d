@@ -54,7 +54,6 @@ export class DashboardComponent implements OnInit {
       localStorage.getItem('my-userId')
     )
     .subscribe((data:any) =>{
-      console.log('codes: ', data);
       this.list = data.codes;
       this.codeEvents = data.countEvents;
       this.countCodes = data.countCodes;

@@ -2,13 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { DropDownAnimation } from "../animations";
 import { HttpClient } from "@angular/common/http";
 import { environment } from "../../environments/environment";
+import { ApiService } from "../services/api.service";
 
 @Component({
-  selector: 'app-products',
-  templateUrl: './pedestrian.component.html',
-  styleUrls: ['./pedestrian.component.scss']
+  selector: 'app-peatonal',
+  templateUrl: './peatonal.component.html',
+  styleUrls: ['./peatonal.component.scss']
 })
-export class PedestrianComponent implements OnInit {
+export class PeatonalComponent implements OnInit {
 
   searchTxt:any;
   isMenuOpened:boolean = false;
@@ -19,7 +20,8 @@ export class PedestrianComponent implements OnInit {
   codeEvents : number = 0;
 
   constructor(
-    private http :HttpClient
+    private http : HttpClient,
+    private apiService : ApiService 
   ) { }
 
   ngOnInit(){
@@ -39,7 +41,9 @@ export class PedestrianComponent implements OnInit {
   getCodes(){
     const today = new Date();
     let index:number = 0;
-    this.http.get(this.api + '/api/codes/').subscribe((data) =>{
+    this.apiService.getData(this.api + 'api/codes/'
+      + localStorage.getItem('my-userId')
+    ).subscribe((data) =>{
       this.list = data;
       this.list.forEach((element:any) => {
         index = index + 1 ;
@@ -56,7 +60,9 @@ export class PedestrianComponent implements OnInit {
   }
 
   getCountEvents(){
-     this.http.get(this.api + '/api/codeEvent/count/all/').subscribe((data:any) =>{
+     this.http.get(this.api + 'api/codeEvent/count/all/' + 
+      localStorage.getItem('my-userId')
+     ).subscribe((data:any) =>{
       this.codeEvents  = data.count;
     });
     

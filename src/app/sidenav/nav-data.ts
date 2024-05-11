@@ -5,17 +5,17 @@ export const navbarData = [
         label: 'Visitas'
     },
     {
-        routeLink: 'products',
+        routeLink: 'peatonal',
         icon: 'fal fa-walking',
         label: 'Peatonal'
     },
     {
-        routeLink: 'statistics',
+        routeLink: 'estadisticas',
         icon: 'fal fa-chart-bar',
         label: 'Estadisticas'
     },
     {
-        routeLink: 'coupens',
+        routeLink: 'tarjetas',
         icon: 'fal fa-tags',
         label: 'Tarjetas'
     },

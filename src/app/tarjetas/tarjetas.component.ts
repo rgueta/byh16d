@@ -2,13 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { DropDownAnimation } from "../animations";
 import { HttpClient } from "@angular/common/http";
 import { environment } from "../../environments/environment";
+import { ApiService } from "../services/api.service";
 
 @Component({
-  selector: 'app-coupens',
-  templateUrl: './badges.component.html',
-  styleUrls: ['./badges.component.scss']
+  selector: 'app-tarjetas',
+  templateUrl: './tarjetas.component.html',
+  styleUrls: ['./tarjetas.component.scss']
 })
-export class BadgesComponent implements OnInit {
+export class TarjetasComponent implements OnInit {
 
   searchTxt:any;
   isMenuOpened:boolean = false;
@@ -19,7 +20,8 @@ export class BadgesComponent implements OnInit {
   codeEvents : number = 0;
 
   constructor(
-    private http :HttpClient
+    private http :HttpClient,
+    private apiService:ApiService,
   ) { }
 
   ngOnInit(){
@@ -39,7 +41,9 @@ export class BadgesComponent implements OnInit {
   getCodes(){
     const today = new Date();
     let index:number = 0;
-    this.http.get(this.api + '/api/codes/').subscribe((data) =>{
+    this.apiService.getData(this.api + 'api/codes/' + 
+      localStorage.getItem('my-userId')
+    ).subscribe((data) =>{
       this.list = data;
       this.list.forEach((element:any) => {
         index = index + 1 ;
@@ -56,7 +60,9 @@ export class BadgesComponent implements OnInit {
   }
 
   getCountEvents(){
-     this.http.get(this.api + '/api/codeEvent/count/all/').subscribe((data:any) =>{
+     this.apiService.getData(this.api + 'api/codeEvent/count/all/' + 
+      localStorage.getItem('my-userId')
+     ).subscribe((data:any) =>{
       this.codeEvents  = data.count;
     });
     

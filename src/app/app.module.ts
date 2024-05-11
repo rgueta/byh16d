@@ -7,9 +7,9 @@ import { AppComponent } from './app.component';
 import { BodyComponent } from './body/body.component';
 import { SidenavComponent } from './sidenav/sidenav.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { PedestrianComponent } from './pedestrian/pedestrian.component';
-import { StatisticsComponent } from './statistics/statistics.component';
-import { BadgesComponent } from './badges/badges.component';
+import { PeatonalComponent } from './peatonal/peatonal.component';
+import { EstadisticasComponent } from './estadisticas/estadisticas.component';
+import { TarjetasComponent } from './tarjetas/tarjetas.component';
 import { PagesComponent } from './pages/pages.component';
 import { MediaComponent } from './media/media.component';
 import { SettingsComponent } from './settings/settings.component';
@@ -29,9 +29,9 @@ import { JwtInterceptor } from "../app/interceptors/jwt.interceptor";
     BodyComponent,
     SidenavComponent,
     DashboardComponent,
-    PedestrianComponent,
-    StatisticsComponent,
-    BadgesComponent,
+    PeatonalComponent,
+    EstadisticasComponent,
+    TarjetasComponent,
     PagesComponent,
     MediaComponent,
     SettingsComponent,
