@@ -106,9 +106,10 @@ export class DashboardComponent implements OnInit {
       showDenyButton: true,
       confirmButtonText: "Si",
       denyButtonText: `No`
-    }).then((result) => {
+    }).then( async (result) => {
       if (result.isConfirmed) {
-        this.router.navigateByUrl('/login', { replaceUrl: true });
+        await this.apiService.logout();
+        this.router.navigateByUrl('', { replaceUrl: true });
         Utils.cleanLocalStorage();
       } else if (result.isDenied) {
         console.log('mantener')

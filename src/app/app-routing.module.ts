@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { RouterModule, Routes, PreloadAllModules } from '@angular/router';
 import { TarjetasComponent } from './tarjetas/tarjetas.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { MediaComponent } from './media/media.component';
@@ -11,7 +11,10 @@ import { LoginComponent } from './login/login.component';
 import { AuthGuard } from "./guards/auth.guard";
 
 const routes: Routes = [
-  {path: '', redirectTo: 'login', pathMatch: 'full'},
+  {
+    path: '', 
+    redirectTo: 'login', 
+    pathMatch: 'full'},
   {path: 'login', component: LoginComponent},
   {path: 'dashboard', component: DashboardComponent,canActivate:[AuthGuard]},
   {path: 'peatonal', component: PeatonalComponent,canActivate:[AuthGuard]},
@@ -23,7 +26,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes,  { preloadingStrategy: PreloadAllModules })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

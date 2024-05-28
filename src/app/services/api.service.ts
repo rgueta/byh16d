@@ -108,7 +108,7 @@ export class ApiService {
       }),
       tap(_ => {
         this.isAuthenticated.next(false);
-        this.router.navigateByUrl('', { replaceUrl: true });
+        this.router.navigateByUrl('/', { replaceUrl: true });
       })
     ).subscribe();
   }
