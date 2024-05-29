@@ -59,10 +59,9 @@
                 <tr>
                     <th>#</th>
                     <th>Codigo</th>
-                    <th>Residente</th>
-                    <th>Inicio</th>
-                    <th>Expira</th>
-                    <th>Correo</th>
+                    <th>Visitante</th>
+                    <th>Entrada</th>
+                    <th>Casa</th>
                     <th>Accion</th>
                 </tr>
             </thead>
@@ -74,10 +73,9 @@
                               'even': !odd}">
                     <td>{{ item.idx }}</td>          
                     <td>{{ item.code }}</td>
-                    <td>{{ item.userName }}</td>
-                    <td>{{ item.initial | date: 'dd/MM/yyyy hh:mm a'}}</td>
-                    <td>{{ item.expiry | date: 'dd/MM/yyyy hh:mm a'}}</td>
-                    <td>{{ item.email }}</td>
+                    <td>{{ item.visitorname }}</td>
+                    <td>{{ item.createdAt }}</td>
+                    <td>{{ item.casa }}</td>
                     <td>
                         <button type="button" >ver</button>
                     </td>

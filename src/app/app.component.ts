@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { SocketIoService } from "./services/socket-io.service";
 
 interface SideNavToggle {
   screenWidth: number;
@@ -16,8 +17,27 @@ export class AppComponent {
   isSideNavCollapsed = false;
   screenWidth = 0;
 
+  constructor(
+    private socketSrv: SocketIoService
+  ){
+
+    this.socketSrv.listenToServer('codeEvent').subscribe((data) =>{
+      this.onCodeEvent(data)
+    });
+
+    this.socketSrv.listenToServer('codes').subscribe((data) =>{
+
+    });
+
+  }
+
   onToggleSideNav(data: SideNavToggle): void {
     this.screenWidth = data.screenWidth;
     this.isSideNavCollapsed = data.collapsed;
   }
+
+  onCodeEvent(codeEvent:any){
+    console.log('codeEvents -->\n', codeEvent)
+  }
+
 }

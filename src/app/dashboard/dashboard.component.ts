@@ -6,6 +6,7 @@ import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
 import { Utils } from "../tools/tools";
 import { ApiService } from "../services/api.service";
+import { SocketIoService } from "../services/socket-io.service";
 
 
 @Component({
@@ -27,14 +28,28 @@ export class DashboardComponent implements OnInit {
   codeEvents : number = 0;
   countCodes : number = 0;
   codeFilter: string = '';
+  socket : any = undefined;
 
   constructor(
     private http :HttpClient,
     private router : Router,
-    private apiService: ApiService
-  ) { }
+    private apiService: ApiService,
+    private socketSrv:SocketIoService
+  ) {
+
+   }
 
   ngOnInit(){
+    this.socketSrv.listenToServer('newCode').subscribe((data:any) =>{
+      this.getCodes();
+    })
+    // this.socket = io.connect(this.api)
+
+    // this.socket.on('codeEvent', (data:any) =>{
+    //   console.log('codeEvent from server --> ', data);
+    // })
+
+
   //Interval ----------------------
   if(environment.interval_call_api){
     this.intervalVar = setInterval(()=>{
@@ -42,10 +57,10 @@ export class DashboardComponent implements OnInit {
       console.log('call API ------', new Date());
     },environment.timer_call_api);
   }
-
    this.getCodes();
-
   }
+
+
 
   getCodes(){
     const today = new Date();

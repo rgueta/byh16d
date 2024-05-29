@@ -23,6 +23,7 @@ import { CookieService } from 'ngx-cookie-service';
 import { JwtInterceptor } from "../app/interceptors/jwt.interceptor";
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,7 +38,7 @@ import { JwtInterceptor } from "../app/interceptors/jwt.interceptor";
     SettingsComponent,
     ClickOutsideDirective,
     SearchPipe,
-    LoginComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -45,7 +46,7 @@ import { JwtInterceptor } from "../app/interceptors/jwt.interceptor";
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule,
+    ReactiveFormsModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

@@ -3,6 +3,7 @@ import { DropDownAnimation } from "../animations";
 import { HttpClient } from "@angular/common/http";
 import { environment } from "../../environments/environment";
 import { ApiService } from "../services/api.service";
+import { SocketIoService } from "../services/socket-io.service";
 
 @Component({
   selector: 'app-peatonal',
@@ -21,29 +22,36 @@ export class PeatonalComponent implements OnInit {
 
   constructor(
     private http : HttpClient,
-    private apiService : ApiService 
+    private apiService : ApiService,
+    private socketSrv:SocketIoService
   ) { }
 
   ngOnInit(){
-  //Interval ----------------------
-  if(environment.interval_call_api){
-    this.intervalVar = setInterval(()=>{
-      this.getCodes();
-      console.log('call API ------', new Date());
-    },environment.timer_call_api);
-  }
 
-   this.getCodes();
+    this.socketSrv.listenToServer('codeEvent').subscribe((data:any) =>{
+      this.getCodeEvents();
+    })
+    
+  //Interval ----------------------
+  // if(environment.interval_call_api){
+  //   this.intervalVar = setInterval(()=>{
+  //     this.getCodes();
+  //     console.log('call API ------', new Date());
+  //   },environment.timer_call_api);
+  // }
+
+   this.getCodeEvents();
    this.getCountEvents();
 
   }
 
-  getCodes(){
+  getCodeEvents(){
     const today = new Date();
     let index:number = 0;
-    this.apiService.getData(this.api + 'api/codes/'
-      + localStorage.getItem('my-userId')
-    ).subscribe((data) =>{
+    this.apiService.getData(this.api + 'api/codeEvent/'
+      + localStorage.getItem('my-core-sim') + '/'
+      + localStorage.getItem('my-userId'))
+      .subscribe((data) =>{
       this.list = data;
       this.list.forEach((element:any) => {
         index = index + 1 ;
